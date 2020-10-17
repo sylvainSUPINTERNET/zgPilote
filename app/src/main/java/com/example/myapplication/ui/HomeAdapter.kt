@@ -15,7 +15,13 @@ class HomeAdapter (private val ctx: Context, private val dataSource: List<TaskDt
     private val inflater: LayoutInflater = ctx.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
 
     // TODO => https://www.raywenderlich.com/155-android-listview-tutorial-with-kotlin#toc-anchor-004
-    
+
+
+    fun getItemAtPosition(position: Int): TaskDto {
+        return dataSource[position]
+    }
+
+
     //1
     override fun getCount(): Int {
         return dataSource.size
