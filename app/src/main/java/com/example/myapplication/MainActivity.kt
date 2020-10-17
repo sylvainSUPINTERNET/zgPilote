@@ -26,6 +26,7 @@ class MainActivity : AppCompatActivity() {
 
         listView = findViewById(R.id.tasksList)
 
+
         val retrofit =
             Retrofit
                 .Builder()
