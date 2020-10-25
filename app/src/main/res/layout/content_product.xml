@@ -8,6 +8,6 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/product_profile_title"/>
+        android:id="@+id/product_profile_name"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

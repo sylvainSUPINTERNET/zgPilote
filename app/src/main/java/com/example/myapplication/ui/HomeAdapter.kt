@@ -8,16 +8,15 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
 import com.example.myapplication.R
-import com.example.myapplication.api.dto.TaskDto
-import org.w3c.dom.Text
+import com.example.myapplication.api.dto.ProductDto
 
-class HomeAdapter (private val ctx: Context, private val dataSource: List<TaskDto>) : BaseAdapter() {
+class HomeAdapter(private val ctx: Context, private val dataSource: List<ProductDto>) : BaseAdapter() {
     private val inflater: LayoutInflater = ctx.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
 
     // TODO => https://www.raywenderlich.com/155-android-listview-tutorial-with-kotlin#toc-anchor-004
 
 
-    fun getItemAtPosition(position: Int): TaskDto {
+    fun getItemAtPosition(position: Int): ProductDto {
         return dataSource[position]
     }
 
@@ -29,7 +28,7 @@ class HomeAdapter (private val ctx: Context, private val dataSource: List<TaskDt
 
     //2
     override fun getItem(position: Int): Any {
-        Log.d("test", dataSource[position].title)
+        Log.d("test", dataSource[position].name)
         return dataSource[position]
     }
 
@@ -44,8 +43,8 @@ class HomeAdapter (private val ctx: Context, private val dataSource: List<TaskDt
         val rowView = inflater.inflate(R.layout.list_item_product, parent, false)
         val textTitle = rowView.findViewById<TextView>(R.id.item_title) as TextView
 
-        val task = getItem(position) as TaskDto
-        textTitle.text = task.title
+        val task = getItem(position) as ProductDto
+        textTitle.text = task.name
 
         return rowView
     }

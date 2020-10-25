@@ -5,13 +5,14 @@ import android.util.Log
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.R
+import com.example.myapplication.api.dto.ProductDto
 import com.example.myapplication.api.dto.TaskDto
 import com.google.gson.Gson
 
 
 class Product : AppCompatActivity() {
-    lateinit var task: TaskDto
-    lateinit var title: TextView
+    lateinit var product: ProductDto
+    lateinit var textViewName: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,9 +20,9 @@ class Product : AppCompatActivity() {
 
         val intent = intent
         intent.getStringExtra("product").let { taskFromListAsJson ->
-            task = Gson().fromJson(taskFromListAsJson, TaskDto::class.java)
-            title = findViewById(R.id.product_profile_title)
-            title.text = task.title
+            product = Gson().fromJson(taskFromListAsJson, ProductDto::class.java)
+            textViewName = findViewById(R.id.product_profile_name)
+            textViewName.text = product.name
         }
     }
 }
