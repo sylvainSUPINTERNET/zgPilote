@@ -12,12 +12,15 @@ import com.example.myapplication.api.dto.TaskDto
 import com.example.myapplication.api.services.ProductService
 import com.example.myapplication.ui.HomeAdapter
 import com.example.myapplication.ui.screens.Product
+import com.example.myapplication.ws.WSListener
 import com.google.gson.Gson
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import okhttp3.*
+import java.util.concurrent.TimeUnit
 
 class MainActivity : AppCompatActivity() {
     lateinit var listView: ListView
@@ -34,7 +37,21 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         listView = findViewById(R.id.tasksList)
 
-        val productRetrofit = Retrofit.Builder().baseUrl("https://sour-owl-70.loca.lt/api/v1/").addConverterFactory(GsonConverterFactory.create()).build()
+
+        /**
+         * TEST WS
+         */
+
+        // wss test
+        val client = OkHttpClient.Builder().readTimeout(3, TimeUnit.SECONDS).build()
+        val request = Request.Builder()
+            .url("wss://echo.websocket.org") // 'wss' - для защищенного канала
+            .build()
+        val wsListener = WSListener()
+        val webSocket = client.newWebSocket(request, wsListener) // this provide to make 'Open ws connection'
+
+
+        val productRetrofit = Retrofit.Builder().baseUrl(getString(R.string.api_url)).addConverterFactory(GsonConverterFactory.create()).build()
         val productService = productRetrofit.create(ProductService::class.java)
         val callProductService = productService.getProducts()
 
