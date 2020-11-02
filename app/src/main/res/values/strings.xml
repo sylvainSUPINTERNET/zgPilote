@@ -9,5 +9,6 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
-    <string name="api_url">https://terrible-dingo-95.loca.lt/api/v1/</string>
+    <string name="api_url">https://green-newt-11.loca.lt/api/v1/</string>
+    <string name="crypto_api_ws">wss://ws-feed.pro.coinbase.com</string>
 </resources>

@@ -22,6 +22,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 import okhttp3.*
 import java.util.concurrent.TimeUnit
 
+
+
 class MainActivity : AppCompatActivity() {
     lateinit var listView: ListView
 
@@ -36,19 +38,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         listView = findViewById(R.id.tasksList)
-
-
-        /**
-         * TEST WS
-         */
-
-        // wss test
-        val client = OkHttpClient.Builder().readTimeout(3, TimeUnit.SECONDS).build()
-        val request = Request.Builder()
-            .url("wss://echo.websocket.org") // 'wss' - для защищенного канала
-            .build()
-        val wsListener = WSListener()
-        val webSocket = client.newWebSocket(request, wsListener) // this provide to make 'Open ws connection'
 
 
         val productRetrofit = Retrofit.Builder().baseUrl(getString(R.string.api_url)).addConverterFactory(GsonConverterFactory.create()).build()
